@@ -1,0 +1,20 @@
+# https://qiita.com/gon0821/items/77369def082745d19c38
+services:
+  db: # ここがコンテナ名になる
+    image: postgres:17.0
+    volumes: 
+      - ./containers/postgresql/data/:/var/lib/postgresql/data/
+    restart: always #コンテナが死んだとき自動再起動するかどうか
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD} # $で.envの環境変数名を指定
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - ${DB_PORT}:5432
+  
+  app:
+    build:
+      context: ./containers/python/ # 基本的にDockerfileのディレクトリにするといいかも？
+    volumes:
+      - ./code/python/:/code/python/ # 中のディレクトリはDockerfileでRUN mkdirで新規作成する場所 
+      
