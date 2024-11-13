@@ -1,1 +1,5 @@
+# 各ライブラリの公式でそのverが対応しているpythonのverを確認すること
+# 内容変更したらdocker compose buildする（upは最初しかbuildしない）
+
 pandas==2.2.3
+psycopg2==2.9.10 # postgresqlを操作するライブラリ
