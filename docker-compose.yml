@@ -10,11 +10,17 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_DB=${POSTGRES_DB}
     ports:
-      - ${DB_PORT}:5432
+      - "$DB_PORT:5432"
   
   app:
     build:
       context: ./containers/python/ # 基本的にDockerfileのディレクトリにするといいかも？
+    working_dir: /code/python/ # 作業ディレクトリの指定
     volumes:
       - ./code/python/:/code/python/ # 中のディレクトリはDockerfileでRUN mkdirで新規作成する場所 
-      
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD} # $で.envの環境変数名を指定
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=5432

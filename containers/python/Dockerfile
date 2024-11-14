@@ -1,5 +1,6 @@
 # https://qiita.com/devactken/items/a7deb653023b4974f499
 # Dockerhubのイメージのページに書き方の参考例がある
+# ここのカスタム内容でイメージを作成する
 
 FROM python:3.12.7-bookworm
 

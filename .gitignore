@@ -1,1 +1,4 @@
 .env
+# pythonをコンパイルしたファイルが自動で作成される(__pycache__ディレクトリ下に)
+# 毎回更新されてGitHubで管理する必要がないので.gitignoreする
+__pycache__
