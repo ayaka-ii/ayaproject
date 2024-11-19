@@ -3,3 +3,4 @@
 
 pandas==2.2.3
 psycopg2==2.9.10 # postgresqlを操作するライブラリ
+Flask==3.0.3 # フレームワーク
