@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>生徒一覧</title>
+    </head>
+    <body>
+        <h2>生徒一覧</h2>
+        {% for student in students %}
+            <p>氏名： {{ student.name }}</p>
+        {% endfor %}
+    </body>
+</html>

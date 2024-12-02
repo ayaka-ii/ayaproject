@@ -10,7 +10,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_DB=${POSTGRES_DB}
     ports:
-      - "$DB_PORT:5432"
+      - "${DB_PORT}:5432"
   
   app:
     build:
@@ -24,3 +24,8 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - DB_HOST=${DB_HOST}
       - DB_PORT=5432
+      - FLASK_APP=${FLASK_APP} # モジュールを指定=__init__.pyが自動実行=main.pyが自動実行される
+      - FLASK_DEBUG=${FLASK_DEBUG} # 1はTRUEなのでデバッグモードがON。本番環境ではデバッグモードOFFにする
+      - FLASK_RUN_HOST=${FLASK_RUN_HOST}
+    ports:
+      - "${FLASK_RUN_PORT}:5000" # 他と衝突しなければなんでもいい
