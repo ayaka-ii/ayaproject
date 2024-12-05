@@ -1,9 +1,9 @@
 # __init__.pyで作成したflaskオブジェクトを呼び出す
 from flask_aya import app
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 import json
 
-from flask_aya.models import select_students, json_students, register_students
+from flask_aya.models import select_students, json_students, register_students, regi
 
 
 import psycopg2
@@ -19,15 +19,21 @@ logger = logging.getLogger(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/registration/')
-def registration():
-    return render_template('registration.html')
-
 @app.route('/students/')
 def students():
     students = select_students()
     logger.info(students)
     return render_template('students.html', students = students)
+
+@app.route('/students/registration/')
+def registration():
+    return render_template('registration.html')
+
+@app.route('/register/', methods=['POST'])
+def register():
+    regi(request.form)
+    return redirect(url_for('index'))
+
 
 # WEBAPI用のエンドポイント（URL）   
 @app.route('/api/students/')

@@ -59,3 +59,13 @@ def register_students(registration_list):
     except Exception as e:
         logger.exception("Error occured in /api/register/")
     pass
+
+def regi(regist_list):
+    try:
+        with connection.cursor() as cur:
+            sql = f"INSERT INTO Address (name, address, telephone) VALUES ('{regist_list["name"]}', '{regist_list["address"]}', '{regist_list["telephone"]}');"
+            cur.execute(sql)
+            connection.commit()
+    except Exception as e:
+        logger.exception("Error occured in /api/register/")
+    pass
