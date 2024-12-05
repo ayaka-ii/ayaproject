@@ -4,7 +4,6 @@ services:
     image: postgres:17.0
     volumes: 
       - ./containers/postgresql/data/:/var/lib/postgresql/data/
-    restart: always #コンテナが死んだとき自動再起動するかどうか
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD} # $で.envの環境変数名を指定
       - POSTGRES_USER=${POSTGRES_USER}
@@ -15,6 +14,8 @@ services:
   app:
     build:
       context: ./containers/python/ # 基本的にDockerfileのディレクトリにするといいかも？
+    depends_on: # 依存関係。dbが起動したあとにappが起動される
+      - "db"
     working_dir: /code/python/ # 作業ディレクトリの指定
     volumes:
       - ./code/python/:/code/python/ # 中のディレクトリはDockerfileでRUN mkdirで新規作成する場所 
