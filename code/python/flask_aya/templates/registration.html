@@ -7,10 +7,23 @@
     <body>
         <h2>新規登録</h2>
         <form method="post" action="{{ url_for('register')}}">
-            <input type="text" name="name">
-            <input type="text" name="address">
-            <input type="text" name="telephone">
-            <input type="submit" value="登録">
+            <table>
+                <tr>
+                    <th>氏名</th>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <th>住所</th>
+                    <td><input type="text" name="address"></td>
+                </tr>
+                <tr>
+                    <th>電話番号</th>
+                    <td><input type="text" name="telephone"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="登録"></td>
+                </tr>
+            </table>
         </form>
 
     </body>

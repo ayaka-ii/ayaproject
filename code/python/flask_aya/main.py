@@ -32,7 +32,7 @@ def registration():
 @app.route('/register/', methods=['POST'])
 def register():
     regi(request.form)
-    return redirect(url_for('index'))
+    return redirect(url_for('students'))
 
 
 # WEBAPI用のエンドポイント（URL）   
